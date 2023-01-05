@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install: 
+  - docker build -t iccircuit/docker-react -f Dockerfile.Dev . 
+
+script: 
+  - docker run -e CI=true iccircuit/docker-react npm run test -- --coverage
